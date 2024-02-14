@@ -1,0 +1,59 @@
+@import "assets/fonts/Helixa/stylesheet.css";
+@import "assets/fonts/Francy/stylesheet.css";
+
+//COLOR PALETTE
+
+$primary: #DC2853;
+$white: #FFFFFF;
+$ultra-light: #F4F4F4;
+$gray: #929292;
+$middle-gray: #696969;
+$dark-gray: #404040;
+$dark: #212121;
+
+//FONT-SIZES
+
+$xxl: 200px;
+$xxm: 150px;
+$xl: 100px;
+$l: 60px;
+$m: 40px;
+$s: 24px;
+
+$gigantic: 240px;
+$body-xl: 18px;
+$body-xm: 16px;
+$body-xs: 14px;
+
+//TYPOGRAPHY
+
+body{
+  font-family: Helixa, sans-serif;
+  font-size: $body-xm;
+}
+
+//COMPONENTS
+
+@mixin primary-btn{
+  padding: 15px 30px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-color: $primary;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $white;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $white;
+    color: $primary;
+  }
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-family: Francy, sans-serif;
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: $dark;
+}

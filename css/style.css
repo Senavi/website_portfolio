@@ -1,0 +1,376 @@
+/***
+    The new CSS reset - version 1.11.2 (last updated 15.11.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+@import "assets/fonts/Helixa/stylesheet.css";
+@import "assets/fonts/Francy/stylesheet.css";
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+  all: unset;
+  display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Fix mobile Safari increase font-size on landscape mode */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+  cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu, summary {
+  list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+  max-inline-size: 100%;
+  max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+  border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+  -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+  white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+  -webkit-appearance: revert;
+  appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+  color: unset;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+  display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
+:where([contenteditable]:not([contenteditable=false])) {
+  -moz-user-modify: read-write;
+  -webkit-user-modify: read-write;
+  overflow-wrap: break-word;
+  -webkit-line-break: after-white-space;
+  -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable=true]) {
+  -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+  all: revert;
+  box-sizing: border-box;
+}
+
+/* Remove details summary webkit styles */
+::-webkit-details-marker {
+  display: none;
+}
+
+body {
+  font-family: Helixa, sans-serif;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Francy, sans-serif;
+  letter-spacing: 3px;
+  font-weight: 500;
+  color: #212121;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+body header {
+  width: 100%;
+  background-color: #212121;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+body header .container {
+  height: 100%;
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 30px;
+}
+body header .container .logotype {
+  width: 100%;
+  height: 100%;
+}
+body header .container nav, body header .container ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (max-width: 1024px) {
+  body header .container nav, body header .container ul {
+    display: none;
+  }
+}
+body header .container nav li a, body header .container ul li a {
+  padding: 22px 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  letter-spacing: 1px;
+  transition: all 0.3s ease-in;
+}
+body header .container nav li a:hover, body header .container ul li a:hover {
+  color: #DC2853;
+}
+body header .container button {
+  padding: 15px 30px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  background-color: #DC2853;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #FFFFFF;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+body header .container button:hover {
+  background-color: #FFFFFF;
+  color: #DC2853;
+}
+body .hero {
+  width: 100%;
+  min-height: 900px;
+  height: 100vh; /* Adjusted to viewport height for full-screen coverage */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+body .hero video {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  z-index: -1;
+}
+body .hero .full {
+  max-width: 1660px;
+  margin: 0 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .hero .full h1 {
+  font-size: 200px;
+  font-family: Francy, sans-serif;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  width: 100%;
+  line-height: 77%;
+}
+@media (max-width: 1024px) {
+  body .hero .full h1 {
+    font-size: 150px;
+    text-align: center;
+  }
+}
+body .hero .full h1 span {
+  color: #DC2853;
+}
+body .featured {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px;
+}
+@media (max-width: 1024px) {
+  body .featured {
+    margin-top: 200px;
+  }
+}
+body .featured .full {
+  max-width: 1660px;
+  margin: 0 30px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .featured .full h2 {
+  font-size: 100px;
+  font-family: Francy, sans-serif;
+  text-transform: uppercase;
+  color: #DC2853;
+  width: 100%;
+  line-height: 77%;
+  position: relative;
+}
+body .featured .full h2:before {
+  content: "FEATURED";
+  color: #F4F4F4;
+  font-size: 240px;
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 30px;
+}
+@media (max-width: 1024px) {
+  body .featured .full h2:before {
+    font-size: 200px;
+  }
+}
+body .featured .full .featured__games {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 60px;
+  gap: 16px;
+}
+@media (max-width: 1024px) {
+  body .featured .full .featured__games {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 40px;
+  }
+}
+body .featured .full .featured__games .game {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+body .featured .full .featured__games .game .game_image {
+  width: 100%;
+  min-height: 590px;
+  max-height: 590px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+@media (max-width: 1024px) {
+  body .featured .full .featured__games .game .game_image {
+    min-height: 450px;
+    max-height: 450px;
+  }
+}
+body .featured .full .featured__games .game .game_image:after {
+  content: "";
+  width: 0;
+  height: 100%;
+  background-color: rgba(220, 40, 83, 0.58);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: all 0.3s ease-out;
+}
+body .featured .full .featured__games .game .game_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+}
+body .featured .full .featured__games .game:hover .game_image:after {
+  width: 100%;
+}
+body .featured .full .featured__games .game .game__details {
+  margin-top: 10px;
+}
+body .featured .full .featured__games .game .game__details .uphead {
+  display: flex;
+  gap: 15px;
+}
+body .featured .full .featured__games .game .game__details .uphead p {
+  color: #929292;
+  text-transform: uppercase;
+}
+body .featured .full .featured__games .game .game__details .uphead .tags {
+  display: flex;
+  gap: 5px;
+}
+body .featured .full .featured__games .game .game__details .uphead .tags a {
+  text-transform: uppercase;
+  color: #DC2853;
+  transition: all 0.2s ease-in;
+}
+body .featured .full .featured__games .game .game__details .uphead .tags a:hover {
+  color: #ff4c77;
+  text-decoration: underline;
+}
+body .featured .full .featured__games .game .game__details h3 {
+  font-size: 60px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 22px;
+}
+
+/*# sourceMappingURL=style.css.map */
