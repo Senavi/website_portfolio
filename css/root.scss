@@ -51,6 +51,23 @@ body{
   }
 }
 
+@mixin primary-outline-btn{
+  padding: 15px 30px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  border: 1px solid $primary;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: $white;
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $primary;
+    color: $white;
+  }
+}
+
 h1, h2, h3, h4, h5, h6{
   font-family: Francy, sans-serif;
   letter-spacing: 3px;
