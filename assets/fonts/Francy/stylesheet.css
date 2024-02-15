@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Francy';
+    src: url('Francy.otf') format("opentype");
+    src: url('Francy.woff2') format('woff2'),
+        url('Francy.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
